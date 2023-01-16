@@ -1,0 +1,75 @@
+{% extends 'bookShop/base.html' %}
+
+{% block body %}
+<header class="p-3 text-bg-dark">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+          <use xlink:href="#bootstrap"></use>
+        </svg>
+      </a>
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="/" class="nav-link px-2 text-warning navbar-brand">Our Library</a></li>
+      </ul>
+
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..."
+          aria-label="Search">
+      </form>
+
+      <div class="text-end">
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'LogOut' %}" type="button" class="btn btn-outline-warning me-2 nav-item">LogOut</a>
+        <a href="{% url 'addBook' %}" type="button" class="btn btn-outline-warning me-2 nav-item">Add Book</a>
+        {% else %}
+        <a href="{% url 'log' %}" type="button" class="btn btn-outline-info me-2 nav-item">Login</a>
+        <a href="{% url 'sign' %}" type="button" class="btn btn-warning nav-item">Sign-Up</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</header>
+<header class="p-.3 bg-secondary ">
+  <div class="container">
+    <header class="d-flex justify-content-center py-3">
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="{% url 'contactUs' %}" class="nav-link text-white">Contact</a></li>
+        <li class="nav-item"><a href="{% url 'about' %}" class="nav-link text-white">About</a></li>
+      </ul>
+    </header>
+  </div>
+</header>
+
+<!-- product display -->
+<div class="container mt-5">
+  <div class="row mb-2">
+    {% for book in books %}
+    <div class="col-md-6 col-sm-6 col-lg-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-3 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-1 text-primary">{{book.name}}</strong>
+          <h5 class="mb-0">{{book.book_name}}</h5>
+          <div class="mb-1 text-muted">Nov 12</div>
+          <div class="card-text">{{book.book_desc}}...</div>
+          <a href="#" class="text-decoration-none"><div>continue</div></a>
+          <div class="flex-column">
+            <div class="mt-3">
+              <a  href="{% url 'bookLend' %}" type="button" class="btn btn-warning btn-sm text-black fw-bold">Request</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <img class="bd-placeholder-img" width="200" height="280" src="main/{{book.image}}">
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% comment %} body first {% endcomment %}
+
+{% endblock body %}

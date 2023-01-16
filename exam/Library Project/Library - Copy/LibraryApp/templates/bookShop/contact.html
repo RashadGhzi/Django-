@@ -1,0 +1,90 @@
+{% extends 'bookShop/base.html' %}
+
+{% block body %}
+<header class="p-3 text-bg-dark">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                    <use xlink:href="#bootstrap"></use>
+                </svg>
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="/" class="nav-link px-2 text-warning navbar-brand">Our Library</a></li>
+            </ul>
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..."
+                    aria-label="Search">
+            </form>
+
+            <div class="text-end">
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'LogOut' %}" type="button" class="btn btn-outline-warning me-2 nav-item">LogOut</a>
+                {% else %}
+                <a href="{% url 'log' %}" type="button" class="btn btn-outline-info me-2 nav-item">Login</a>
+                <a href="{% url 'sign' %}" type="button" class="btn btn-warning nav-item">Sign-up</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>
+<header class="p-.3 bg-secondary ">
+    <div class="container">
+        <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="/" class="nav-link text-white">Home</a></li>
+                <li class="nav-item"><a href="{% url 'contactUs' %}" class="nav-link active" aria-current="page">Contact</a></li>
+                <li class="nav-item"><a href="{% url 'about' %}" class="nav-link text-white" >About</a>
+                </li>
+            </ul>
+        </header>
+    </div>
+</header>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="mt-5 col-md-5 col-sm-5 col-lg-5">
+            <h1 >Have questions? Shoot us an <b class="text-success">Email</b></h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, molestias deleniti. Minus facilis dicta temporibus illum molestiae, nisi unde suscipit, cupiditate reprehenderit voluptates aspernatur. Eum deleniti saepe reprehenderit quod placeat?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, fuga. Nobis consequatur eos recusandae saepe doloremque eius, rerum laborum incidunt perferendis sapiente deserunt ab! Odio perferendis repellendus quas praesentium, molestias distinctio illum quasi, delectus nemo, temporibus numquam! Adipisci dignissimos, veniam similique doloribus consectetur enim, quidem dicta doloremque aperiam itaque officia!</p>
+        </div>
+        <div class="col-md-7 col-sm-7 col-lg-7">
+            <img height="450px" width="650px" src="https://cdn.searchenginejournal.com/wp-content/uploads/2018/08/Contact-2x_619996812.webp">
+        </div>
+        
+    </div>
+</div>
+
+<div class="container mt-5">
+    <form>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        </div>
+        <div class="form-group mt-2">
+            <label for="exampleFormControlSelect1">Example select</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+                <option>Web</option>
+                <option>Tech Stack</option>
+                <option>Technology</option>
+                <option>Other</option>
+            </select>
+        </div>
+        <div class="custom-control custom-checkbox mt-2">
+            <input type="checkbox" class="custom-control-input" id="customCheckDisabled" >
+            <label class="custom-control-label" for="customCheckDisabled">If you are member</label>
+          </div>
+        <div class="form-group mt-2">
+            <label for="exampleFormControlTextarea1">Example textarea</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-outline-warning mt-3">Submit</button>
+    </form>
+    <footer class="container mt-5">
+        <p>© 2017-2018 iCoder, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+    </footer>
+</div>
+
+{% endblock body %}

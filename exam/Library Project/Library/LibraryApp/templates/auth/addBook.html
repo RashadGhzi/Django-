@@ -1,0 +1,21 @@
+{% extends 'auth/base.html' %}
+{% block body %}
+<div class="container">
+        <div class="col-md-7 col-lg-8 mt-5">
+            <h4 class="mb-3">Add your book on our site</h4>
+            <table>
+                <form class="needs-validation" action="{% url 'addBookForm' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row g-3">
+                        {% for form in form %}
+                            {{form.label_tag}}
+                            {{form}}
+                        {% endfor %}
+                        <div class="col-2">
+                            <button class="w-100 btn btn-warning btn-lg text-black" type="submit">upload</button>
+                        </div>
+                </form>
+            </table>
+        </div>
+</div>
+{% endblock body %}

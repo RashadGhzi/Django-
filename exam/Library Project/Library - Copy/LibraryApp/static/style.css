@@ -1,0 +1,36 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.navbar-brand {
+    font-size: 2rem;
+    font-family: 'Pacifico', cursive;
+}
+
+    
+.nav-item {
+    font-family: 'Space Mono', monospace;
+    margin-right: 10px;
+    margin-left: 10px;
+
+    text-transform: uppercase;
+}
+
+.nav-item:hover {
+    color: black;
+}
+
+
+.main{
+    background: url(./image/first_imag_1.jpg);
+    background-size: cover;
+    height: 100vh;
+    background-position: 50% 50%;
+    width: 100%;
+}
+
+.about-text{
+    color: green;
+}

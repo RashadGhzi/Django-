@@ -1,0 +1,31 @@
+{% extends 'auth/base.html' %}
+{% block body %}
+<div class="container">
+        <div class="col-md-7 col-lg-8 mt-5">
+            <h4 class="mb-3">LogIn here </h4>
+            <form action="{% url 'logForm' %}" method="post">
+                {% csrf_token %}
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label for="username" class="form-label">Username</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text">@</span>
+                            <input name="username" type="text" class="form-control" id="username" placeholder="Username" required="">
+                            <div class="invalid-feedback">
+                                Your username is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label for="address" class="form-label">Password</label>
+                        <input name="password" type="text" class="form-control" id="address" placeholder="Password" required="">
+                    </div>
+                    <button class="w-100 btn btn-primary btn-lg" type="submit">LogIn</button>
+                    <a class="text-decoration-none text-center text-black" href="#">don't have an account ? <b
+                            class="text-warning">SignUp here</b></a>
+                    <a href="sign" class="w-100 btn btn-warning btn-lg text-white" type="submit">SignUp</a>
+                </div>
+            </form>
+        </div>
+</div>
+{% endblock body %}
